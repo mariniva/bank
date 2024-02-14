@@ -24,16 +24,17 @@ class RenderService {
 				const componentName = elementTagName
 					.replace(componentTagPattern, '')
 					.replace(/-/g, '');
+				
 				const foundComponent = components.find(Component => {
 					const instance =
 						Component instanceof ChildComponent ? Component : new Component();
 					return instance.constructor.name.toLowerCase() === componentName;
-				});
+				}); 
 				if (foundComponent) {
 					const componentContent =
 						foundComponent instanceof ChildComponent
 							? foundComponent.render()
-							: new foundComponent.render();
+							: new foundComponent().render();
 					element.replaceWith(componentContent);
 				} else {
 					console.error(

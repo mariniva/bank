@@ -61,7 +61,7 @@ export class Router {
 
 			$R('#app').append(this.#layout);
 		} else {
-			$R('#content').html(''), append(component);
+			$R('#content').html('').append(component);
 		}
 	}
 }
